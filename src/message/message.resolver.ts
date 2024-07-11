@@ -130,6 +130,7 @@ export class MessageResolver {
     @AuthenticatedUser() authenticatedUser: IAuthenticatedUser,
   ): Promise<ChatMessage> {
     await this.messageLogic.like(likeMessageDto, authenticatedUser);
+    return this.messageLogic.getMessage(likeMessageDto.messageId, authenticatedUser); //added a return to get the updated message
   }
 
   @Mutation(() => ChatMessage)
